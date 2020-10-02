@@ -58,10 +58,8 @@ If you don't find your screen resolution and you want to contribue, follow these
 
 ## Installation on Linux
 Follow these steps to install __adb__, python lisb such as __Pillow__,__matplotlib__, __numpy__, __pure-python-adb__, __pyqt5__:
-- `$ apt install adb`
-- `$ pip install Pillow matplotlib numpy pure-python-adb`
-- `$ pip install pyqt5` . If it fails, try with `$ sudo apt-get install python3-pyqt5`
-- Install __Android Studio__ with sdk ([link here](https://developer.android.com/studio))
+- `$ pip install -r requirements.txt`
+- `$ apt install adb`. If adb is too old, download the binary from here <https://developer.android.com/studio/releases/platform-tools>
 - Enable __debug mode__ on your Smartphone (Settings -> about phone/info and tap 7 times on kernel version, then Settings -> debug options, activate it, debug mode and activate it). May vary based on phone model.
 
 ## Installation on Windows
