@@ -421,6 +421,10 @@ class CaveEngine(QObject):
             elif state == "devil_question":
                 self.tap('ability_daemon_reject')
                 self.wait(3)
+            elif state == "unknown":
+                # FIXME if the state is unknown, it's probably a fortune wheel.
+                self.tap('spin_wheel_back')
+                self.wait(3)
             elif state == "ad_ask":
                 self.tap('spin_wheel_back')
                 self.wait(3)
