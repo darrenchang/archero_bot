@@ -76,7 +76,7 @@ class QLevelViewer(QWidget):
 
     def _setupUI(self):
         self.frame.setAttribute(QtCore.Qt.WA_StyledBackground, True)
-        self.frame.setFixedSize(80, 80)
+        self.frame.setFixedSize(150, 100)
         self.frame.setGeometry(0, 0, 0, 0)
         self.frame.mousePressEvent = self.onSelfClicked
         font = QtGui.QFont()

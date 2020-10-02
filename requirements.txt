@@ -4,3 +4,4 @@ PyQt5-sip==12.8.1
 PyQt5-stubs==5.14.2.2
 numpy==1.19.2
 pure-python-adb==0.3.0.dev0
+matplotlib==3.3.2

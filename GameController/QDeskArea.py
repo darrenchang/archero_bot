@@ -22,7 +22,7 @@ class QDeskArea(QWidget):
         self.setAttribute(QtCore.Qt.WA_StyledBackground, True)
         self.setStyleSheet("background-color: rgb(43, 43, 43)")
         self.chapersState = []
-        self.rows = 2
+        self.rows = 4
         self.initUI()
         self.initconnectors()
 
@@ -66,7 +66,7 @@ class QDeskArea(QWidget):
             self.box.addLayout(lay)
         for i, v in level_names.items():
             object = QLevelState(self.model,self.controller,i,v)
-            object.setFixedSize(150, 300)
+            object.setFixedSize(200, 300)
             if i == self.model.engine.currentLevel:
                 object.SetState(PlayState.Playing)
             self.chapersState.append(object)

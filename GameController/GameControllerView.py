@@ -1,3 +1,5 @@
+from typing import Union
+
 from PyQt5.QtGui import QResizeEvent
 
 from GameController.GameControllerModel import GameControllerModel, EngineState
@@ -16,6 +18,8 @@ from GameController.QDungeonSelector import QDungeonSelector
 
 
 class GameControllerWindow(QWidget):
+    main_layout: Union[QGridLayout, QGridLayout]
+
     def __init__(self, model: GameControllerModel, controller: GameControllerController):
         super(QWidget, self).__init__()
         self.toolbar_w = 80
@@ -104,9 +108,9 @@ class GameControllerWindow(QWidget):
     def setupUi(self, main_window: QMainWindow):
         main_window.setObjectName("game_controller_window")
         self.setObjectName("main_window")
-        self.resize(450, 620)
-        self.setMinimumWidth(620)
-        self.setMinimumHeight(450)
+        self.resize(1500, 1450)
+        self.setMinimumWidth(1500)
+        self.setMinimumHeight(1450)
         self.main_layout.setSpacing(0)
         self.main_layout.setContentsMargins(0, 0, 0, 0)
         self.main_layout.setColumnStretch(0, 0)
