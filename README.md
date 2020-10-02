@@ -40,7 +40,7 @@ It was originally build to continously start a game (dungeon 6: the cave), play 
 
 - Supported dungeons:
   - 3 . Abandoned Dungeon: tested, FAILING
-  - 6 . The Cave: tested, FAILING with 1 year update
+  - 6 . The Cave: tested, FAILING with 1 year update (Sometimes it tap the ad on the fortune wheel)
   - 10 . The Cave: tests TBD, FAILING with 1 year update
 
 - Tested resolutions
