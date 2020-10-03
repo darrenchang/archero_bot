@@ -286,7 +286,7 @@ class CaveEngine(QObject):
         print("Going through dungeon (designed for #6)")
         self.log("Cross dungeon 6")
         self.disableLogs = True
-        self.swipe('n', 1.5)
+        self.swipe('n', 2)
         self.swipe('w', .32)
         self.swipe('n', .5)
         self.swipe('e', .32)
@@ -344,7 +344,6 @@ class CaveEngine(QObject):
 
     def letPlay(self, _time: int, is_boss=False):
         check_exp_bar = not is_boss
-        self.wait(2)
         print("Auto attacking")
         self.log("Auto attacking")
         experience_bar_line = self.screen_connector.getLineExpBar()
@@ -411,39 +410,39 @@ class CaveEngine(QObject):
             print("state: %s" % state)
             if state == "select_ability":
                 self.tap('ability_left')
-                self.wait(3)
+                self.wait(1)
             elif state == "fortune_wheel":
                 self.tap('lucky_wheel_start')
                 self.wait(6)
             elif state == "repeat_endgame_question":
                 self.tap('spin_wheel_back')
-                self.wait(3)
+                self.wait(1)
             elif state == "devil_question":
                 self.tap('ability_daemon_reject')
-                self.wait(3)
+                self.wait(1)
             elif state == "unknown":
                 # FIXME if the state is unknown, it's probably a fortune wheel.
                 self.tap('spin_wheel_back')
-                self.wait(3)
+                self.wait(1)
             elif state == "ad_ask":
                 self.tap('spin_wheel_back')
-                self.wait(3)
+                self.wait(1)
             elif state == "mistery_vendor":
                 self.tap('spin_wheel_back')
-                self.wait(3)
+                self.wait(1)
             elif state == "special_gift_respin":
                 self.tap('spin_wheel_back')
-                self.wait(3)
+                self.wait(1)
             elif state == "angel_heal":
                 self.tap('heal_right' if self.healingStrategy == HealingStrategy.AlwaysHeal else 'heal_left')
-                self.wait(3)
+                self.wait(1)
             elif state == "on_pause":
                 self.tap('resume')
-                self.wait(3)
+                self.wait(1)
             elif state == "time_prize":
                 print("Collecting time prize and ending game. Unexpected behaviour but managed")
                 self.tap("collect_time_prize")
-                self.wait(3)
+                self.wait(2)
                 raise Exception('ended')
             elif state == "endgame":
                 raise Exception('ended')
@@ -549,7 +548,7 @@ class CaveEngine(QObject):
             elif self.levels_type[self.currentLevel] == self.t_boss:
                 self.boss_lvl()
             self.changeCurrentLevel(self.currentLevel + 1)
-        self.wait(5)
+        self.wait(1)
         if self.screen_connector.checkFrame('endgame'):
             self.tap('close_end')
             self.gameWon.emit()
@@ -561,15 +560,11 @@ class CaveEngine(QObject):
     def boss_final(self):
         self.wait(2)
         self.swipe('w', 3)
-        self.wait(50)
         self.reactGamePopups()
-        self.tap('start')
-        self.wait(2)
         self.swipe('n', 5)
-        self.wait(.5)
         self.swipe('ne', 3)
-        self.wait(5)
-        self.tap('close_end')  # this is to wxit
+        self.wait(10)
+        self.tap('close_end')  # this is to exit
 
     def chooseCave(self):
         print("Main menu")
@@ -593,7 +588,7 @@ class CaveEngine(QObject):
         self.screen_connector.stopRequested = False
         self.log("New game started")
         print("New game. Starting from level %d" % self.currentLevel)
-        self.wait(4)
+        self.wait(1)
         if self.screen_connector.checkFrame("time_prize"):
             print("Collecting time prize")
             self.tap("resume")
@@ -605,7 +600,7 @@ class CaveEngine(QObject):
                 while (not self.SkipEnergyCheck) and not self.screen_connector.checkFrame("least_5_energy"):
                     print("No energy, waiting for one minute")
                     self.noEnergyLeft.emit()
-                    self.wait(60)
+                    self.wait(30)
             self.chooseCave()
         try:
             self.play_cave()
